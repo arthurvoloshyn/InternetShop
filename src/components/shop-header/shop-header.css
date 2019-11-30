@@ -3,6 +3,13 @@
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+@media(max-width: 460px) {
+  .shop-header {
+    flex-direction: column;
+  }
 }
 
 .shop-header .logo {
@@ -11,10 +18,23 @@
   padding-left: 1rem;
 }
 
+@media(max-width: 460px) {
+  .shop-header .logo {
+    padding: 0;
+  }
+}
+
 .shop-header .shopping-cart {
   align-self: center;
   font-size: 1.3rem;
   padding-right: 1rem;
+}
+
+@media(max-width: 460px) {
+  .shop-header .shopping-cart {
+    padding: 0;
+    margin-bottom: 1rem;
+  }
 }
 
 .shop-header .shopping-cart .cart-icon {
@@ -22,4 +42,3 @@
   color: cadetblue;
   margin-right: 10px;
 }
-

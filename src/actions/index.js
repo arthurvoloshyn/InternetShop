@@ -1,4 +1,3 @@
-
 const booksRequested = () => {
   return {
     type: 'FETCH_BOOKS_REQUEST'
@@ -40,12 +39,14 @@ export const allBooksRemovedFromCart = (bookId) => {
   };
 };
 
+/* eslint-disable no-unused-vars */
 const fetchBooksOld = (bookstoreService, dispatch) => () => {
   dispatch(booksRequested());
   bookstoreService.getBooks()
     .then((data) => dispatch(booksLoaded(data)))
     .catch((err) => dispatch(booksError(err)));
 };
+/* eslint-enable */
 
 const fetchBooks = (bookstoreService) => () => (dispatch) => {
   dispatch(booksRequested());

@@ -1,8 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import { save } from 'redux-localstorage-simple'
 
-import reducer from './reducers';
+import reducer from '../reducers';
 
+const composeEnhancers =
+  process.env.NODE_ENV !== 'production' &&
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
 const logMiddleware = ({ getState }) => (next) => (action) => {
   console.log(action.type, getState());
@@ -19,8 +25,9 @@ const stringMiddleware = () => (next) => (action) => {
   return next(action);
 };
 
-const store = createStore(reducer, applyMiddleware(
-  thunkMiddleware, stringMiddleware, logMiddleware));
+const store = createStore(reducer, composeEnhancers(
+     applyMiddleware(save({ namespace: 're-store' }), thunkMiddleware, stringMiddleware, logMiddleware)
+   ));
 
 
 const delayedActionCreator = (timeout) => (dispatch) => {

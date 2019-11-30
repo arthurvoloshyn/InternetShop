@@ -1,14 +1,19 @@
-const updateBookList = (state, action) => {
+import { load } from 'redux-localstorage-simple';
 
-  if (state === undefined) {
-    return {
+let initialState = load({ namespace: 're-store' });
+
+if (!initialState || !initialState.bookList || !initialState.bookList.length) {
+  initialState = {
+    bookList: {
       books: [],
       loading: true,
       error: null
-    };
+    },
   }
+}
 
-  switch (action.type) {
+const updateBookList = (state = initialState, { type, payload }) => {
+  switch (type) {
     case 'FETCH_BOOKS_REQUEST':
       return {
         books: [],
@@ -18,7 +23,7 @@ const updateBookList = (state, action) => {
 
     case 'FETCH_BOOKS_SUCCESS':
       return {
-        books: action.payload,
+        books: payload,
         loading: false,
         error: null
       };
@@ -27,7 +32,7 @@ const updateBookList = (state, action) => {
       return {
         books: [],
         loading: false,
-        error: action.payload
+        error: payload
       };
 
     default:
