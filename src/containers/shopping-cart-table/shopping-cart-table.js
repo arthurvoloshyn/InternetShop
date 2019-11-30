@@ -13,31 +13,33 @@ const ShoppingCartTable = ({ items, total, onIncrease, onDecrease, onDelete }) =
   <div className="shopping-cart-table">
     <h2>Your Order</h2>
 
-    <div className="table-responsive">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Item</th>
-            <th>Count</th>
-            <th>Price</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+    {items && items.length ?
+      <div className="table-responsive">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Item</th>
+              <th>Count</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {items.map((item, idx) => (
-            <ShoppingCartRow
-              key={idx}
-              item={item}
-              idx={idx}
-              onIncrease={onIncrease}
-              onDecrease={onDecrease}
-              onDelete={onDelete} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+          <tbody>
+            {items.map((item, idx) => (
+              <ShoppingCartRow
+                key={idx}
+                item={item}
+                idx={idx}
+                onIncrease={onIncrease}
+                onDecrease={onDecrease}
+                onDelete={onDelete} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    : null}
 
     <div className="total">
       Total: ${total}
