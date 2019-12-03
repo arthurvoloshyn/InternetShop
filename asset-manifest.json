@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/InternetShop/static/css/main.8bd842fe.chunk.css",
-    "main.js": "/InternetShop/static/js/main.9408824b.chunk.js",
-    "main.js.map": "/InternetShop/static/js/main.9408824b.chunk.js.map",
+    "main.js": "/InternetShop/static/js/main.99c23e4b.chunk.js",
+    "main.js.map": "/InternetShop/static/js/main.99c23e4b.chunk.js.map",
     "runtime~main.js": "/InternetShop/static/js/runtime~main.21f753c0.js",
     "runtime~main.js.map": "/InternetShop/static/js/runtime~main.21f753c0.js.map",
-    "static/js/2.8dc9ef82.chunk.js": "/InternetShop/static/js/2.8dc9ef82.chunk.js",
-    "static/js/2.8dc9ef82.chunk.js.map": "/InternetShop/static/js/2.8dc9ef82.chunk.js.map",
+    "static/js/2.96fdbaf9.chunk.js": "/InternetShop/static/js/2.96fdbaf9.chunk.js",
+    "static/js/2.96fdbaf9.chunk.js.map": "/InternetShop/static/js/2.96fdbaf9.chunk.js.map",
     "index.html": "/InternetShop/index.html",
-    "precache-manifest.8abc2aae828ba0cc64edbf4cf4a9d87f.js": "/InternetShop/precache-manifest.8abc2aae828ba0cc64edbf4cf4a9d87f.js",
+    "precache-manifest.d5362e3d12ff5dfdd0951fc2fc102067.js": "/InternetShop/precache-manifest.d5362e3d12ff5dfdd0951fc2fc102067.js",
     "service-worker.js": "/InternetShop/service-worker.js",
     "static/css/main.8bd842fe.chunk.css.map": "/InternetShop/static/css/main.8bd842fe.chunk.css.map"
   }
