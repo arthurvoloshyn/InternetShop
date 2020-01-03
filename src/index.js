@@ -1,26 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
+
+import * as serviceWorker from './serviceWorker';
 
 import App from './components/app';
-import ErrorBoundry from './components/error-boundry';
-import BookstoreService from './services/bookstore-service';
-import { BookstoreServiceProvider } from './context/bookstore-service-context';
 
-import store from './store/';
+ReactDOM.render(<App />, document.getElementById('root'));
 
-const bookstoreService = new BookstoreService();
-
-ReactDOM.render(
-  <Provider store={store}>
-    <ErrorBoundry>
-      <BookstoreServiceProvider value={bookstoreService}>
-        <Router>
-          <App />
-        </Router>
-      </BookstoreServiceProvider>
-    </ErrorBoundry>
-  </Provider>,
-  document.getElementById('root')
-);
+serviceWorker.register();

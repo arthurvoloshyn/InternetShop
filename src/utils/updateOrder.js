@@ -1,39 +1,28 @@
 const updateCartItems = (cartItems, item, idx) => {
+  const { count } = item;
+  const firstCartItems = cartItems.slice(0, idx);
+  const lastCartItems = cartItems.slice(idx + 1);
 
-  if (item.count === 0) {
-    return [
-      ...cartItems.slice(0, idx),
-      ...cartItems.slice(idx + 1)
-    ];
+  if (count === 0) {
+    return [...firstCartItems, ...lastCartItems];
   }
 
   if (idx === -1) {
-    return [
-      ...cartItems,
-      item
-    ];
+    return [...cartItems, item];
   }
 
-  return [
-    ...cartItems.slice(0, idx),
-    item,
-    ...cartItems.slice(idx + 1)
-  ];
+  return [...firstCartItems, item, ...lastCartItems];
 };
 
 const updateCartItem = (book, item = {}, quantity) => {
-
-  const {
-    id = book.id,
-    count = 0,
-    title = book.title,
-    total = 0 } = item;
+  const { id: bookId, title: bookTitle, price: bookPrice } = book;
+  const { id = bookId, count = 0, title = bookTitle, total = 0 } = item;
 
   return {
     id,
     title,
     count: count + quantity,
-    total: total + quantity * book.price
+    total: total + quantity * bookPrice
   };
 };
 
@@ -48,7 +37,10 @@ const updateTotalOrder = (cartItems, val) => {
 };
 
 const updateOrder = (state, bookId, quantity) => {
-  const { bookList: { books }, shoppingCart: { cartItems } } = state;
+  const {
+    bookList: { books },
+    shoppingCart: { cartItems }
+  } = state;
 
   const book = books.find(({ id }) => id === bookId);
   const itemIndex = cartItems.findIndex(({ id }) => id === bookId);
@@ -57,12 +49,12 @@ const updateOrder = (state, bookId, quantity) => {
   const newItem = updateCartItem(book, item, quantity);
   const newItems = updateCartItems(cartItems, newItem, itemIndex);
 
-  const orderTotal = updateTotalOrder(newItems, 'total');
-  const countTotal = updateTotalOrder(newItems, 'count');
+  const totalOrder = updateTotalOrder(newItems, 'total');
+  const totalCount = updateTotalOrder(newItems, 'count');
 
   return {
-    orderTotal,
-    countTotal,
+    totalOrder,
+    totalCount,
     cartItems: newItems
   };
 };

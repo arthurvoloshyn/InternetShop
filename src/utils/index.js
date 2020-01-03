@@ -1,9 +1,4 @@
-import compose from './compose';
-import amounts from './amounts';
 import updateOrder from './updateOrder';
+import getDisplayName from './getDisplayName';
 
-export {
-  compose,
-  updateOrder,
-  amounts
-};
+export { updateOrder, getDisplayName };

@@ -1,8 +1,8 @@
 .table-responsive {
   display: block;
-  width: 100%;
-  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  width: 100%;
 }
 
 .shopping-cart-table {
@@ -10,7 +10,7 @@
 }
 
 .shopping-cart-table .total {
-  text-align: right;
   font-size: 1.3rem;
   margin-right: 10px;
+  text-align: right;
 }

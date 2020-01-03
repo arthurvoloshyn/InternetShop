@@ -1,32 +1,38 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
-import ShopHeader from '../shop-header';
+import { Provider } from 'react-redux';
+import { Route, Switch, HashRouter as Router } from 'react-router-dom';
+
+import BookstoreService from '../../services/bookstore-service';
+
+import { BookstoreServiceProvider } from '../../context/bookstore-service-context';
+
+import store from '../../store/';
+
+import ShopHeader from '../../containers/shop-header';
+
+import ErrorBoundry from '../error-boundry';
 import { HomePage, CartPage } from '../pages';
 
-import './app.css';
+const bookstoreService = new BookstoreService();
 
-const App = ({ count, total }) => (
-  <main role="main" className="container">
-    <ShopHeader numItems={count} total={total} />
+const App = () => (
+  <Provider store={store}>
+    <ErrorBoundry>
+      <BookstoreServiceProvider value={bookstoreService}>
+        <Router>
+          <main role="main" className="container">
+            <ShopHeader />
 
-    <Switch>
-      <Route
-        path="/"
-        component={HomePage}
-        exact />
+            <Switch>
+              <Route path="/" component={HomePage} exact />
 
-      <Route
-        path="/cart"
-        component={CartPage}
-        />
-    </Switch>
-  </main>
+              <Route path="/cart" component={CartPage} />
+            </Switch>
+          </main>
+        </Router>
+      </BookstoreServiceProvider>
+    </ErrorBoundry>
+  </Provider>
 );
 
-const mapStateToProps = ({ shoppingCart: { countTotal, orderTotal }}) => ({
-  count: countTotal,
-  total: orderTotal
-});
-
-export default connect(mapStateToProps)(App);
+export default App;
