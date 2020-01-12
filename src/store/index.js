@@ -1,16 +1,18 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { save } from 'redux-localstorage-simple';
 
-import { stringMiddleware, logMiddleware } from '../middlewares';
+import { stringMiddleware, logMiddleware, getLocalStorageMiddleware, setLocalStorageMiddleware } from '../middlewares';
 
 import { DELAYED_ACTION } from '../constants';
 
 import reducer from '../reducers';
 
 const composeEnhancers = process.env.NODE_ENV !== 'production' && typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+const persisedState = getLocalStorageMiddleware();
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(save({ namespace: 're-store' }), thunkMiddleware, stringMiddleware, logMiddleware)));
+const configureStore = preloadedState => createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(setLocalStorageMiddleware, thunkMiddleware, stringMiddleware, logMiddleware)));
+
+const store = configureStore(persisedState);
 
 const delayedActionCreator = timeout => dispatch => {
   setTimeout(
