@@ -1,20 +1,14 @@
-import { load } from 'redux-localstorage-simple';
-
 import { BOOK_ADDED_TO_CART, BOOK_REMOVED_FROM_CART, ALL_BOOKS_REMOVED_FROM_CART, amounts } from '../constants';
 
 import { updateOrder } from '../utils';
 
-let initialState = load({ namespace: 're-store' });
-
-if (!initialState || !initialState.shoppingCart || !initialState.cartItems) {
-  initialState = {
-    shoppingCart: {
-      cartItems: [],
-      orderTotal: 0,
-      countTotal: 0
-    }
-  };
-}
+const initialState = {
+  shoppingCart: {
+    cartItems: [],
+    orderTotal: 0,
+    countTotal: 0
+  }
+};
 
 const updateShoppingCart = (state = initialState, { type, payload }) => {
   const { negativeAmount, positiveAmount } = amounts;
