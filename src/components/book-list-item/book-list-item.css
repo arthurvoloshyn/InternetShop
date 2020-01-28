@@ -28,3 +28,14 @@
 .book-list-item .book-details .book-price {
   font-size: 1.4rem;
 }
+
+.book-list-item .book-details .add-to-cart {
+  background-color: #3f51b5;
+  border-color: #3f51b5;
+  color: #fff;
+}
+
+.book-list-item .book-details .add-to-cart:hover {
+  background-color: #2f3d90;
+  border-color: #2b3886;
+}

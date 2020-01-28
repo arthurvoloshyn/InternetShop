@@ -12,7 +12,7 @@ const BookListItem = ({ title, author, price, coverImage, onAddedToCart }) => (
       <span className="book-title">{title}</span>
       <div className="book-author">{author}</div>
       <div className="book-price">${price}</div>
-      <button onClick={onAddedToCart} className="btn btn-info add-to-cart">
+      <button onClick={onAddedToCart} className="btn add-to-cart">
         Add to cart
       </button>
     </div>

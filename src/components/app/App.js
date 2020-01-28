@@ -20,7 +20,7 @@ const App = () => (
     <ErrorBoundry>
       <BookstoreServiceProvider value={bookstoreService}>
         <Router>
-          <main role="main" className="container">
+          <main className="container">
             <ShopHeader />
 
             <Switch>
