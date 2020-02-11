@@ -30,12 +30,12 @@
 }
 
 .book-list-item .book-details .add-to-cart {
-  background-color: #3f51b5;
-  border-color: #3f51b5;
+  background-color: #0071ea;
+  border-color: #0071ea;
   color: #fff;
 }
 
 .book-list-item .book-details .add-to-cart:hover {
-  background-color: #2f3d90;
-  border-color: #2b3886;
+  background-color: #0069d9;
+  border-color: #0062cc;
 }
