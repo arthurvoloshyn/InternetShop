@@ -9,4 +9,4 @@ export const BOOK_REMOVED_FROM_CART = 'BOOK_REMOVED_FROM_CART';
 export const ALL_BOOKS_REMOVED_FROM_CART = 'ALL_BOOKS_REMOVED_FROM_CART';
 
 export const styles = 'color: #fff; background-color: #2274a5';
-export const amounts = { negativeAmount: -1, positiveAmount: 1 };
+export const quantity = { negativeQuantity: -1, positiveQuantity: 1 };

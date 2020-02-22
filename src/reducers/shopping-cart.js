@@ -1,4 +1,4 @@
-import { BOOK_ADDED_TO_CART, BOOK_REMOVED_FROM_CART, ALL_BOOKS_REMOVED_FROM_CART, amounts } from '../constants';
+import { BOOK_ADDED_TO_CART, BOOK_REMOVED_FROM_CART, ALL_BOOKS_REMOVED_FROM_CART, quantity } from '../constants';
 
 import { updateOrder } from '../utils';
 
@@ -11,15 +11,15 @@ const initialState = {
 };
 
 const updateShoppingCart = (state = initialState, { type, payload }) => {
-  const { negativeAmount, positiveAmount } = amounts;
+  const { negativeQuantity, positiveQuantity } = quantity;
 
   switch (type) {
     case BOOK_ADDED_TO_CART: {
-      return updateOrder(state, payload, positiveAmount);
+      return updateOrder(state, payload, positiveQuantity);
     }
 
     case BOOK_REMOVED_FROM_CART: {
-      return updateOrder(state, payload, negativeAmount);
+      return updateOrder(state, payload, negativeQuantity);
     }
 
     case ALL_BOOKS_REMOVED_FROM_CART: {
