@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/InternetShop/static/css/main.a9d8fc8d.chunk.css",
-    "main.js": "/InternetShop/static/js/main.6e3959e0.chunk.js",
-    "main.js.map": "/InternetShop/static/js/main.6e3959e0.chunk.js.map",
+    "main.js": "/InternetShop/static/js/main.136a2729.chunk.js",
+    "main.js.map": "/InternetShop/static/js/main.136a2729.chunk.js.map",
     "runtime~main.js": "/InternetShop/static/js/runtime~main.21f753c0.js",
     "runtime~main.js.map": "/InternetShop/static/js/runtime~main.21f753c0.js.map",
     "static/js/2.cd07d21b.chunk.js": "/InternetShop/static/js/2.cd07d21b.chunk.js",
     "static/js/2.cd07d21b.chunk.js.map": "/InternetShop/static/js/2.cd07d21b.chunk.js.map",
     "index.html": "/InternetShop/index.html",
-    "precache-manifest.d22f9ac0d8d9c6956b4ee1c9d334907a.js": "/InternetShop/precache-manifest.d22f9ac0d8d9c6956b4ee1c9d334907a.js",
+    "precache-manifest.f1ce2424dc46548c6d6b2c960daa48b5.js": "/InternetShop/precache-manifest.f1ce2424dc46548c6d6b2c960daa48b5.js",
     "service-worker.js": "/InternetShop/service-worker.js",
     "static/css/main.a9d8fc8d.chunk.css.map": "/InternetShop/static/css/main.a9d8fc8d.chunk.css.map"
   }
