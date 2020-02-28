@@ -12,6 +12,22 @@ import Spinner from '../../components/spinner';
 import ErrorIndicator from '../../components/error-indicator';
 
 class BookListContainer extends Component {
+  static propTypes = {
+    loading: PropTypes.bool,
+    error: PropTypes.object,
+    fetchBooks: PropTypes.func,
+    onAddedToCart: PropTypes.func,
+    books: PropTypes.array
+  };
+
+  static defaultProps = {
+    loading: false,
+    error: {},
+    fetchBooks: () => {},
+    onAddedToCart: () => {},
+    books: []
+  };
+
   componentDidMount() {
     const { fetchBooks } = this.props;
 
@@ -43,21 +59,5 @@ const mapDispatchToProps = (dispatch, { bookstoreService }) =>
     },
     dispatch
   );
-
-BookListContainer.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.object,
-  fetchBooks: PropTypes.func,
-  onAddedToCart: PropTypes.func,
-  books: PropTypes.array
-};
-
-BookListContainer.defaultProps = {
-  loading: false,
-  error: {},
-  fetchBooks: () => {},
-  onAddedToCart: () => {},
-  books: []
-};
 
 export default compose(withBookstoreService(), connect(mapStateToProps, mapDispatchToProps))(BookListContainer);
