@@ -12,7 +12,7 @@ const ShoppingCartTable = ({ items, total, onIncrease, onDecrease, onDelete }) =
   <div className="shopping-cart-table">
     <h2>Your Order</h2>
 
-    {items && items.length ? (
+    {items?.length ? (
       <div className="table-responsive">
         <table className="table">
           <thead>

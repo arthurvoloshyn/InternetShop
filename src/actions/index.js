@@ -1,4 +1,4 @@
-import { FETCH_BOOKS_REQUEST, FETCH_BOOKS_SUCCESS, FETCH_BOOKS_FAILURE, BOOK_ADDED_TO_CART, BOOK_REMOVED_FROM_CART, ALL_BOOKS_REMOVED_FROM_CART } from '../constants';
+import { FETCH_BOOKS_REQUEST, FETCH_BOOKS_SUCCESS, FETCH_BOOKS_FAILURE, BOOK_ADDED_TO_CART, BOOK_REMOVED_FROM_CART, ALL_BOOKS_REMOVED_FROM_CART, DELAYED_ACTION } from '../constants';
 
 const booksRequested = () => ({
   type: FETCH_BOOKS_REQUEST
@@ -29,17 +29,7 @@ export const allBooksRemovedFromCart = bookId => ({
   payload: bookId
 });
 
-/* eslint-disable no-unused-vars */
-const fetchBooksOld = (bookstoreService, dispatch) => () => {
-  dispatch(booksRequested());
-  bookstoreService
-    .getBooks()
-    .then(data => dispatch(booksLoaded(data)))
-    .catch(err => dispatch(booksError(err)));
-};
-/* eslint-enable */
-
-const fetchBooks = bookstoreService => () => dispatch => {
+export const fetchBooks = bookstoreService => () => dispatch => {
   dispatch(booksRequested());
   bookstoreService
     .getBooks()
@@ -47,4 +37,12 @@ const fetchBooks = bookstoreService => () => dispatch => {
     .catch(err => dispatch(booksError(err)));
 };
 
-export { fetchBooks };
+export const delayedActionCreator = timeout => dispatch => {
+  setTimeout(
+    () =>
+      dispatch({
+        type: DELAYED_ACTION
+      }),
+    timeout
+  );
+};

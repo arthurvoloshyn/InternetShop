@@ -2,8 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 import { stringMiddleware, logMiddleware, getLocalStorageMiddleware, setLocalStorageMiddleware } from '../middlewares';
-
-import { DELAYED_ACTION } from '../constants';
+import { delayedActionCreator } from '../actions';
 
 import reducer from '../reducers';
 
@@ -13,16 +12,6 @@ const persisedState = getLocalStorageMiddleware();
 const configureStore = preloadedState => createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(setLocalStorageMiddleware, thunkMiddleware, stringMiddleware, logMiddleware)));
 
 const store = configureStore(persisedState);
-
-const delayedActionCreator = timeout => dispatch => {
-  setTimeout(
-    () =>
-      dispatch({
-        type: DELAYED_ACTION
-      }),
-    timeout
-  );
-};
 
 store.dispatch(delayedActionCreator(3000));
 
